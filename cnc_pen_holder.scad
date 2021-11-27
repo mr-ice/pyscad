@@ -21,21 +21,26 @@ slot_dia = 1; // added to dia to cut a slot
 
 slot_half = (oid-iod)/2;
 
+outer_thickness = 1;  // thickness of bottom outside OD
+thickness = 2.33; // thickness of bottom inside OD
+
+outer_wall_depth = 6 + outer_thickness;
+
 difference() {  // difference
     
     // base
     tube(pen_depth, od+4, id);
     
     // remove outer bit to make tube
-    move(z=1.5)
+    move(z=outer_thickness)
     tube(pen_depth, od+5, od);
     
     // cut out the middle bits above the outer wall
-    move(z=7)
+    move(z=outer_wall_depth)
     tube(pen_depth, od+3, id+4);
     
     // cut out the middle bits below the outer wall
-    move(z=1.5)
+    move(z=thickness)
     tube(pen_depth, od-3, id+4);
     
     // slot in inner wall to provide friction fit for pen
@@ -96,7 +101,7 @@ difference() {  // difference
 difference() {
     for(r=[91:120:359]) {
         linear_extrude(5)
-        sector(od/2+0.75, [r, r+15]);
+        sector(od/2+0.5, [r, r+5]);
     };
     move(z=-1)
     cylinder(pen_depth, r=od/2-1.5);
