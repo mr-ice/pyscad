@@ -5,7 +5,7 @@ use <../scadlib/sector.scad>
 // od = 36.5
 // id = 11.75
 od = 36.75;  // outer diameter (hole in plate)
-id = 11.75; // inner diameter (hole for pen)
+id = 11.7; // inner diameter (hole for pen)
 $fn = 180;
 
 pen_depth = 10;
