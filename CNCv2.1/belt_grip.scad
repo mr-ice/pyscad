@@ -3,15 +3,7 @@ use <../../scadlib/tube.scad>
 
 $fn = 180;
 
-width=10;
-pitch=2;
-length = 19;
-
-wall_t = 2;
-
-t = 1;
-
-module gate(t, length, width, pitch=pitch) {
+module belt_grip(t=1, length=19, width=10, pitch=2) {
     union() {
         cube([1, length, width]);
         move(x=1)
@@ -26,5 +18,5 @@ module gate(t, length, width, pitch=pitch) {
 };
 
 move(x=5)
-gate(t, length, width);
+belt_grip(t, length, width);
 
